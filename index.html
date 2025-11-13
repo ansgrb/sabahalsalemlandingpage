@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabah Al Salem App - Redesign Proposal</title>
+    <meta name="description" content="A design case study and interactive prototype for the Sabah Al Salem market app.">
+    <link rel="icon" type="image/png" href="images/sabahelsalem_logo.png">
+
+    <!-- Google Fonts: Poppins for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-light: #f7f8fa;
+            --surface: #ffffff;
+            --primary-green: #2E7D32; /* A modern, rich green */
+            --primary-green-dark: #1B5E20;
+            --text-dark: #1c2025;
+            --text-light: #5a6472;
+            --border-color: #e4e7eb;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Header & Hero --- */
+        .hero {
+            background-color: var(--surface);
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .hero-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 16px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: var(--primary-green);
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .hero-button:hover {
+            background-color: var(--primary-green-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+        }
+
+        /* --- Section Styling --- */
+        .section {
+            padding: 6rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        /* --- Figma Prototype Section --- */
+        .prototype-wrapper {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background-color: var(--surface);
+        }
+        .prototype-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 650px;
+            border: 0;
+        }
+
+        /* --- Dual Experience Section --- */
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .dual-item {
+            text-align: center;
+        }
+        .dual-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .dual-item p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        .dual-item img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        .dual-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        /* --- Status Section --- */
+        .status-section {
+            background-color: var(--surface);
+            padding: 5rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .dual-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            .section { padding: 4rem 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <img src="images/sabahelsalem_logo.png" alt="Sabah Al Salem Logo" class="hero-logo">
+            <h1>A Redesign Proposal for Sabah Al Salem</h1>
+            <p class="subtitle">
+                A comprehensive design case study and interactive prototype aimed at enhancing the user experience for both customers and stakeholders.
+            </p>
+            <a href="#prototype" class="hero-button">View Interactive Prototype</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">The Vision</h2>
+                <p class="section-subtitle">
+                    This project is a dedicated effort to reimagine the Sabah Al Salem digital experience. Based on a deep case study of customer needs and business objectives, this design introduces two distinct, user-centric interfaces: a streamlined journey for customers and a powerful dashboard for stakeholders.
+                </p>
+            </div>
+        </section>
+
+        <!-- Interactive Prototype Section -->
+        <section id="prototype" class="section">
+            <div class="container">
+                <h2 class="section-title">Experience the Design Live</h2>
+                <p class="section-subtitle">
+                    Click through the Figma prototype below to explore the proposed user flows, interactions, and design system.
+                </p>
+                <div class="prototype-wrapper">
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FGVhzUXrs2MkfdLT7SJz9vD%2FSabah-Al-Salem-App%3Fnode-id%3D245-2578%26p%3Df%26scaling%3Dscale-down%26content-scaling%3Dfixed%26page-id%3D55%253A75%26starting-point-node-id%3D245%253A2578%26show-proto-sidebar%3D1" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dual Experience Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Two Experiences, One Platform</h2>
+                <p class="section-subtitle">
+                    The redesign addresses the unique needs of each user group within a single, cohesive application.
+                </p>
+                <div class="dual-grid">
+                    <div class="dual-item">
+                        <h3>For the Customer</h3>
+                        <p>An intuitive and seamless shopping experience designed for ease of use and engagement.</p>
+                        <img src="images/screenshots/normal_user/Home II.png" alt="Customer Home Screen">
+                    </div>
+                    <div class="dual-item">
+                        <h3>For the Stakeholder</h3>
+                        <p>A powerful, data-driven dashboard for managing operations and monitoring performance.</p>
+                        <img src="images/screenshots/shareholder/Home II Shareholder.png" alt="Stakeholder Dashboard">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Design Showcase</h2>
+                <p class="section-subtitle">
+                    A collection of key screens from the proposed design, highlighting the clean UI, modern components, and thoughtful user experience.
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="images/screenshots/normal_user/Search II.png" alt="Search Screen"></div>
+                    <div class="gallery-item"><img src="images/screenshots/normal_user/Offers II.png" alt="Offers Screen"></div>
+                    <div class="gallery-item"><img src="images/screenshots/normal_user/Cart II.png" alt="Cart Screen"></div>
+                    <div class="gallery-item"><img src="images/screenshots/shareholder/My Account II Shareholder.png" alt="Shareholder Account"></div>
+                    <div class="gallery-item"><img src="images/screenshots/normal_user/Scan II.png" alt="Scan Screen"></div>
+                    <div class="gallery-item"><img src="images/screenshots/shareholder/Search II Shareholders.png" alt="Shareholder Search"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Section -->
+        <section class="status-section">
+            <div class="container">
+                <h2 class="section-title">Ready for Development</h2>
+                <p class="section-subtitle">
+                    This design is the result of careful planning and creative exploration, transforming initial ideas into a tangible, user-validated prototype. The project is now awaiting approval to be brought to life with code.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                Design proposal by <a href="https://github.com/ansgrb" target="_blank" rel="noopener noreferrer">Anas Ghareib</a>.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
